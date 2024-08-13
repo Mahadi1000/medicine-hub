@@ -7,30 +7,34 @@ import Link from "next/link";
 import { useRouter } from "next/navigation"; // For client-side navigation
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/features/userSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const dispatch = useDispatch();
   // console.log(email, password)
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-       const response = await axios.post("/api/users/login", {
-         email,
-         password,
-       });
-       console.log(response);
-       toast.success("Login successfully")
-       
-    if (response.data.success) {
+      const response = await axios.post("/api/users/login", {
+        email,
+        password,
+      });
+      const userData = response.data
+      console.log(response);
+      toast.success("Login successfully");
+      // Dispatch user data to the Redux store
+      dispatch(setUser(userData));
+      if (response.data.success) {
         toast.success("Login successful!");
         router.push("/dashboard"); // Redirect to the dashboard or another page after login
       } else {
         toast.error("Login failed. Please check your credentials.");
       }
-      
     } catch (error) {
       console.error("Unexpected error:", error);
     }

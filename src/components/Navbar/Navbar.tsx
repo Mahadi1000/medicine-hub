@@ -25,26 +25,6 @@ export default function Navbar() {
           <div>
             <ul className="flex items-center">
               <li>
-                <Button variant="link" asChild>
-                  <Link href="/">Home</Link>
-                </Button>
-              </li>
-              <li>
-                <Button variant="link" asChild>
-                  <Link href="/products">Products</Link>
-                </Button>
-              </li>
-              <li>
-                <Button variant="link" asChild>
-                  <Link href="/checkout">Checkout</Link>
-                </Button>
-              </li>
-              <li>
-                <Button variant="link" asChild>
-                  <Link href="/add-product">Add Product</Link>
-                </Button>
-              </li>
-              <li>
                 <Button variant="ghost">
                   <HiOutlineSearch size="25" />
                 </Button>

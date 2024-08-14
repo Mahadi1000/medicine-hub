@@ -23,8 +23,6 @@ export interface IUser extends Document {
   verifyCodeExpiry?: Date;
 }
 
-// User schema definition
-
 const UserSchema: Schema<IUser> = new mongoose.Schema<IUser>(
   {
     fullname: {
